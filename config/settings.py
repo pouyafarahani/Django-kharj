@@ -30,7 +30,9 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-LOCALE_APPS = []
+LOCALE_APPS = [
+    'home.apps.HomeConfig',
+]
 
 PARTY_APPS = []
 
