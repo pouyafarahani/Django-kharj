@@ -2,6 +2,13 @@
 
 {% block title %} register {% endblock title %}
 
+{% if messages %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+
+{% endif %}
+
 {% block body %}
         <h1 style="margin-left: 20px">signup</h1>
     <form action="{% url 'accounts:register' %}" method="post">
