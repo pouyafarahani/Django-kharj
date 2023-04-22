@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 LOCALE_APPS = [
     'home.apps.HomeConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 PARTY_APPS = [
@@ -132,3 +133,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# custom user
+AUTH_USER_MODEL = 'accounts.CustomUser'
