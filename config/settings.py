@@ -34,7 +34,9 @@ LOCALE_APPS = [
     'home.apps.HomeConfig',
 ]
 
-PARTY_APPS = []
+PARTY_APPS = [
+    'bootstrap5',
+]
 
 
 INSTALLED_APPS = [
@@ -120,7 +122,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
