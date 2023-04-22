@@ -3,6 +3,7 @@
 {% block title %} register {% endblock title %}
 
 {% block body %}
+        <h1 style="margin-left: 20px">signup</h1>
     <form action="{% url 'accounts:register' %}" method="post">
     {% csrf_token %}
     <div style="margin-left: 30px; margin-top: 20px">
