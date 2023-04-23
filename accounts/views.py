@@ -16,7 +16,9 @@ class RegisterView(View):
         if form.is_valid():
             cd = form.cleaned_data
             try:
-                User.objects.create_user(cd['username'], None, cd['password'])
+                user = User.objects.create_user(cd['username'], None, cd['password'])
+                messages.success(request, f'khoshomdi {cd["username"]}')
+                login(request, user)
             except:
                 messages.warning(request, 'in username ghabln sabtname karde :)')
                 return render(request, 'accounts/register.html', {'form': form})
@@ -35,7 +37,7 @@ class LogInView(View):
             cd = form.cleaned_data
             user = authenticate(request, username=cd['username'], password=cd['password'])
             if user is not None:
+                messages.success(request, f'khoshomdi {cd["username"]}')
                 login(request, user)
                 return redirect('home:home')
             return redirect('accounts:login')
-
