@@ -1,4 +1,5 @@
 {% extends '_base.html' %}
+{% load humanize %}
 {% load crispy_forms_tags %}
 
 {% block title %} Home {% endblock title %}
@@ -23,7 +24,7 @@
                     <th scope="row">{{ forloop.counter }}</th>
                     <td>{{ cost.name }}</td>
                     <td>{{ cost.explanation }}</td>
-                    <td>{{ cost.price }}</td>
+                    <td>{{ cost.price|intcomma:False }} Toman</td>
                     <td>{{ cost.time }}</td>
                 </tr>
                 {% empty %}

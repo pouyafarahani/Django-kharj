@@ -7,11 +7,16 @@ from .forms import costsForms
 
 class HomeView(View):
     form = costsForms
+    price = 0
 
     def get(self, request):
         if request.user.is_authenticated:
             costs = costsModel.objects.all()
-            return render(request, 'home/home.html', {'form': self.form(), 'costs': costs})
+            prices = costsModel.objects.values_list('price', flat=True)
+
+            for i in prices:
+                self.price += i
+            return render(request, 'home/home.html', {'form': self.form(), 'costs': costs, 'price': self.price})
         return render(request, 'home/home.html', {'form': self.form()})
 
     def post(self, request):
