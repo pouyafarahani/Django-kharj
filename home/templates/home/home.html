@@ -4,34 +4,40 @@
 {% block title %} Home {% endblock title %}
 
 {% block body %}
+    {% if user.is_authenticated %}
 
-    <table class="table table-striped table-dark">
+        <table class="table table-striped table-dark">
 
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">title</th>
-            <th scope="col">explanation</th>
-            <th scope="col">price</th>
-            <th scope="col">time</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for cost in costs %}
+            <thead>
             <tr>
-                <th scope="row">{{ forloop.counter }}</th>
-                <td>{{ cost.name }}</td>
-                <td>{{ cost.explanation }}</td>
-                <td>{{ cost.price }}</td>
-                <td>{{ cost.time }}</td>
+                <th scope="col">#</th>
+                <th scope="col">title</th>
+                <th scope="col">explanation</th>
+                <th scope="col">price</th>
+                <th scope="col">time</th>
             </tr>
-        {% endfor %}
+            </thead>
+            <tbody>
+            {% for cost in costs %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ cost.name }}</td>
+                    <td>{{ cost.explanation }}</td>
+                    <td>{{ cost.price }}</td>
+                    <td>{{ cost.time }}</td>
+                </tr>
+                {% empty %}
+                <p>hichi hanoz ezafe nakardiiiii ke </p>
+            {% endfor %}
 
-        </tbody>
-    </table>
-    <form action="{% url 'home:home' %}" method="post" style="margin-left: 20px">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <input type="submit" class="btn btn-success">
-    </form>
+            </tbody>
+        </table>
+        <form action="{% url 'home:home' %}" method="post" style="margin-left: 20px">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" class="btn btn-success">
+        </form>
+        {% else %}
+        <h2>loftan login konid</h2>
+    {% endif %}
 {% endblock body %}

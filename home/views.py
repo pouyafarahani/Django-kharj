@@ -11,7 +11,8 @@ class HomeView(View):
     def get(self, request):
         if request.user.is_authenticated:
             costs = costsModel.objects.all()
-        return render(request, 'home/home.html', {'form': self.form(), 'costs': costs})
+            return render(request, 'home/home.html', {'form': self.form(), 'costs': costs})
+        return render(request, 'home/home.html', {'form': self.form()})
 
     def post(self, request):
         if request.user.is_authenticated:
